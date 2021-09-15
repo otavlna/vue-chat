@@ -10,9 +10,9 @@
     <ul>
       <li
         v-for="channel in channels"
-        :class="channel.id === activeChannelId ? 'selected' : ''"
+        :class="channel._id === activeChannelId ? 'selected' : ''"
         :key="channel.id"
-        @click="changeChannel(channel.id)"
+        @click="changeChannel(channel._id)"
       >
         {{ channel.name }}
       </li>
@@ -40,7 +40,7 @@ export default {
   props: {
     sidebarOpen: Boolean,
     channels: Array,
-    activeChannelId: Number,
+    activeChannelId: String,
     username: String,
     avatar: String
   }

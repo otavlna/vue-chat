@@ -29,6 +29,7 @@
         :nick="message.who"
         :avatarUrl="message.avatar"
       />
+      <p v-if="!currentActiveChannel">No channels found!</p>
     </main>
     <TheSidebarBottom @send="sendMessage" />
   </div>
@@ -72,7 +73,7 @@ export default {
       newChannelShown: false,
       socket: null,
       channels: [],
-      activeChannelId: 0,
+      activeChannelId: null,
       user: {
         username: "",
         avatar: ""
@@ -113,7 +114,9 @@ export default {
 
   computed: {
     currentActiveChannel() {
-      return this.channels.find(channel => channel.id === this.activeChannelId);
+      return this.channels.find(
+        channel => channel._id === this.activeChannelId
+      );
     },
 
     currentChannelMessages() {
@@ -139,6 +142,9 @@ export default {
           console.log(res.data);
           this.channels.splice(0, this.channels.length, ...res.data);
           break;
+      }
+      if (!this.activeChannelId) {
+        this.activeChannelId = this.channels[0]._id;
       }
     };
 

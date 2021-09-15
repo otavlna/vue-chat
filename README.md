@@ -8,10 +8,10 @@ Jedná se pouze o pokusnou záležitost ve Vue.js, hlubší význam hledat netř
 
 - uvnitř ./client: **npm install && npm run serve**
 - uvnitř ./server: **npm install && nodemon index**
+- musí běžet MongoDB na localhostu port 27017
 
 ## Todo
 
-- přidat ukládání do databáze
 - nastylovat třeba pomocí Vuetify jakmile vyjde pro Vue 3
 
 ## Poznatky
